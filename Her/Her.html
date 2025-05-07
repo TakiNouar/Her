@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whispers of the Heart</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Georgia", serif;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background: #000;
+        padding: 1rem;
+      }
+
+      .background-blur {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle at 30% 30%,
+          #3c1361,
+          #1b1f3b,
+          #0f2027,
+          #050505
+        );
+        background-size: 400% 400%;
+        filter: blur(150px);
+        animation: shiftColors 60s ease infinite;
+        z-index: -2;
+      }
+
+      @keyframes shiftColors {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .glowing-orb {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 100, 100, 0.9),
+          rgba(255, 60, 60, 0.4),
+          rgba(0, 0, 0, 0)
+        );
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.7;
+        z-index: -1;
+        transition: left 6s ease, top 6s ease;
+        animation: heartbeat 1.5s ease-in-out infinite;
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          opacity: 0.7;
+          filter: blur(100px);
+        }
+        50% {
+          opacity: 1;
+          filter: blur(120px);
+        }
+      }
+
+      .wooden-board {
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        height: 80%;
+        padding: 1rem 1.5rem;
+        background-image: url("https://i.imgur.com/3Qw1N93.jpg");
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        border-radius: 20px;
+        color: #fef9f3;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        border: 4px solid #3a2a1a;
+        overflow: hidden;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .wooden-board::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 0;
+        border-radius: 20px;
+      }
+
+      .wooden-board * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .wooden-board h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: #ffb6ff;
+      }
+
+      .wooden-board p.subtitle {
+        font-size: 1.2rem;
+        font-style: italic;
+        margin-bottom: 1.5rem;
+        color: #caa0ff;
+      }
+
+      .poem {
+        font-size: 1.2rem;
+        line-height: 1.4;
+        white-space: pre-wrap;
+        color: #e8d5f7;
+        max-height: 60%;
+        overflow-y: scroll;
+        padding-right: 10px;
+        transition: all 0.3s ease; /* Smooth transition for scroll */
+      }
+
+      /* Custom Scrollbar */
+      .poem::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      .poem::-webkit-scrollbar-track {
+        background: #1b1f3b;
+        border-radius: 10px;
+      }
+
+      .poem::-webkit-scrollbar-thumb {
+        background: #ffb6ff;
+        border-radius: 10px;
+        transition: background-color 0.3s;
+      }
+
+      .poem::-webkit-scrollbar-thumb:hover {
+        background: #caa0ff;
+      }
+
+      .footer {
+        text-align: center;
+        font-style: italic;
+        font-size: 0.9rem;
+        color: #9999cc;
+      }
+
+      /* Responsive Styles */
+      @media (min-width: 600px) {
+        .wooden-board h1 {
+          font-size: 3.5rem;
+        }
+
+        .wooden-board p.subtitle {
+          font-size: 1.5rem;
+        }
+
+        .poem {
+          font-size: 1.5rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .wooden-board h1 {
+          font-size: 2.2rem;
+        }
+
+        .wooden-board p.subtitle {
+          font-size: 1rem;
+        }
+
+        .poem {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-blur"></div>
+    <div class="glowing-orb"></div>
+
+    <div class="wooden-board">
+      <h1>Whispers of the Heart</h1>
+      <p class="subtitle">A soft corner of the web for gentle words</p>
+
+      <div class="poem" id="poem">
+        I’ve never seen her,<br />
+        but her laugh feels like spring —<br />
+        bright, warm,<br />
+        a soft little thing.<br /><br />
+        Her voice is comfort,<br />
+        wrapped in light,<br />
+        a spark that visits<br />
+        on quiet nights.<br /><br />
+        Her giggles sting the heart,<br />
+        soft-Tender,<br />
+        floating over<br />
+        some hidden sweet part.<br /><br />
+        What makes me freeze?<br />
+        is the way she chuckles —<br />
+        like a secret breaking free,<br />
+        light and careless,<br />
+        leaving my weak heart defenseless.
+      </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio autoplay loop hidden>
+      <source
+        src="Tame Impala - The Less I Know The Better (Audio).mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+
+    <script>
+      const poem = document.getElementById("poem");
+
+      let autoScrollInterval;
+      let isUserScrolling = false;
+      let resumeTimeout;
+
+      function startAutoScroll() {
+        clearInterval(autoScrollInterval);
+        autoScrollInterval = setInterval(() => {
+          if (!isUserScrolling) {
+            if (poem.scrollTop >= poem.scrollHeight - poem.clientHeight - 5) {
+              // Pause at bottom for 3 seconds
+              clearInterval(autoScrollInterval);
+              setTimeout(() => {
+                // Scroll quickly to top
+                const scrollToTop = () => {
+                  poem.scrollTop -= 15;
+                  if (poem.scrollTop > 0) {
+                    requestAnimationFrame(scrollToTop);
+                  } else {
+                    // Pause at top for 3 seconds before restarting
+                    setTimeout(startAutoScroll, 3000);
+                  }
+                };
+                scrollToTop();
+              }, 3000);
+            } else {
+              poem.scrollTop += 1;
+            }
+          }
+        }, 50);
+      }
+
+      // Start auto-scrolling after initial 2 second delay
+      setTimeout(startAutoScroll, 2000);
+
+      // Handle user interaction
+      poem.addEventListener("mousedown", () => {
+        isUserScrolling = true;
+      });
+      poem.addEventListener("mouseup", () => {
+        isUserScrolling = false;
+        // Wait 1 second after user stops scrolling to resume
+        clearTimeout(resumeTimeout);
+        resumeTimeout = setTimeout(startAutoScroll, 1000);
+      });
+
+      poem.addEventListener("wheel", (e) => {
+        isUserScrolling = true;
+        clearInterval(autoScrollInterval);
+        clearTimeout(resumeTimeout);
+        resumeTimeout = setTimeout(() => {
+          isUserScrolling = false;
+          startAutoScroll();
+        }, 1000);
+      });
+
+      // Touch support for mobile
+      poem.addEventListener("touchstart", () => {
+        isUserScrolling = true;
+      });
+      poem.addEventListener("touchend", () => {
+        isUserScrolling = false;
+        clearTimeout(resumeTimeout);
+        resumeTimeout = setTimeout(startAutoScroll, 1000);
+      });
+    </script>
+  </body>
+</html>
